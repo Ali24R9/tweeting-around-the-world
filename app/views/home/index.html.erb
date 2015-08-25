@@ -1,1 +1,5 @@
-<div id="map"></div>
+<%= javascript_include_tag "//maps.googleapis.com/maps/api/js?key=" + Rails.application.secrets.google_maps + "&callback=initMap" %>
+
+<div id="map-container">
+  <div id="map"></div>
+</div>
