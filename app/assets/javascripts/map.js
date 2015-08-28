@@ -1,5 +1,7 @@
 var map;
 var markers = [];
+var myLatlng;
+var latLng;
 
 function initMap() {
 
@@ -20,7 +22,7 @@ function initMap() {
     marker.setMap(null);
     deleteMarkers();
     placeMarkerAndPanTo(e.latLng, map);
-
+    myLatlng = latLng
   });
 
   function placeMarkerAndPanTo(latLng, map) {
@@ -32,6 +34,18 @@ function initMap() {
 
     map.panTo(latLng);
     markers.push(marker);
+
+    // $.post( "/flickr/get_token", myLatlng, function(myLatlng) {
+    // });
+
+    $.ajax({
+      type: "GET",
+      url: "/twitter/get_tweet",
+      data: {coordinates: myLatlng},
+      success: function(data){
+        alert(data["id"])
+      }
+    });
   }
 
   function deleteMarkers() {
@@ -42,6 +56,7 @@ function initMap() {
     markers = [];
   }
 }
+
 
 // function placeMarkerAndPanTo(latLng, map) {
 

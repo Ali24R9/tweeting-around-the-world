@@ -34,6 +34,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'flickraw'
+gem 'httparty'
+gem 'multi_xml'
+gem 'omniauth'
+gem 'twitter'
+gem 'omniauth-twitter'
 
 
 group :development, :test do
@@ -51,7 +57,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'launchy'
   gem 'quiet_assets'
-
+  gem 'omniauth-flickr', '0.0.19'
 
 end
 
