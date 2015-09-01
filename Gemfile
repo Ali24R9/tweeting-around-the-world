@@ -40,6 +40,7 @@ gem 'multi_xml'
 gem 'omniauth'
 gem 'twitter'
 gem 'omniauth-twitter'
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 
 group :development, :test do
