@@ -4,6 +4,13 @@ html, body {
   padding: 0;
 }
 
+.navbar{
+  background-color: #55ACEE;
+}
+
+h5{
+  text-align: center;
+}
 #map {
   height: 100%;
 }
@@ -11,3 +18,12 @@ html, body {
 #map-container {
   height: 50%;
 }
+
+#container-color{
+  background-color: #55ACEE;
+}
+// #tweets{
+//   display: inline-block;
+//   width: 100%;
+//   margin: 0 auto;
+// }

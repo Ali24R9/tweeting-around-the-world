@@ -1,9 +1,10 @@
 <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?key=" + Rails.application.secrets.google_maps + "&callback=initMap" %>
-
+<h5> Click on a city to see recent popular tweets from and about that location!</h5>
 <div id="map-container">
   <div id="map"></div>
 </div>
-
-<div id="tweets">
-
+<div id="container-wrapper">
+  <div class="container">
+    <div id="tweets"></div>
+  </div>
 </div>

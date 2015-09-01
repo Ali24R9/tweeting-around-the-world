@@ -23,5 +23,5 @@ Rails.application.routes.draw do
  # resources :sessions, only: [:create, :destroy]
  # resource :home, only: [:show]
  post 'tweets/get_tweets', :to => 'tweets#get_tweets'
-
+ get 'tweets/load_tweets', :to => 'tweets#load_tweets'
 end

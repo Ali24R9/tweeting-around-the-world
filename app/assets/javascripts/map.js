@@ -18,6 +18,18 @@ function initMap() {
      title: 'Click to zoom'
    });
 
+  $.ajax({
+    type: "GET",
+    url: "/tweets/load_tweets",
+    success: function(data){
+      tweets = data["embedded_tweets"]
+      $("#tweets").empty();
+      $.each(tweets, function(index, value){
+        $("#tweets").append("<div id=" + index + " style='float: left; height: 500px;'></div>")
+        $('#' + index).append(value.html)
+      });
+    }
+  });
   map.addListener('click', function(e) {
     marker.setMap(null);
     deleteMarkers();
@@ -50,7 +62,7 @@ function initMap() {
         tweets = data["embedded_tweets"]
         $("#tweets").empty();
         $.each(tweets, function(index, value){
-          $("#tweets").append("<div id=" + index + "></div>")
+          $("#tweets").append("<div id=" + index + " style='float: left; height: 500px;'></div>")
           $('#' + index).append(value.html)
         });
       }
