@@ -9,7 +9,6 @@ class TweetsController < ApplicationController
     end
     coordinates = JSON.parse(params[:coordinates])
     coordinates = {lat: coordinates["G"], lng: coordinates["K"]}
-
     results = client.geo_search(lat: coordinates[:lat], long: coordinates[:lng])
 
     place_id = results.attrs[:result][:places][0][:contained_within][0][:id]
