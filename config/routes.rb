@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  # get 'tweets/new'
 
-  get 'sessions/create'
+  # get 'tweets/create'
 
-  get 'sessions/failure'
+  # get 'sessions/destroy'
+
+  # get 'sessions/new'
+
+  # get 'sessions/create'
+
+  # get 'sessions/failure'
 
  root to: "home#index"
 
 
- #locations
- get 'twitter/get_tweet', :to => 'twitter#get_tweet'
+
+ # get '/auth/:provider/callback', :to => 'sessions#create'
+ # get 'auth/failure', :to => redirect('/')
+
+ # get 'signout', :to => 'sessions#destroy', as: 'signout'
+ # resources :tweets, only: [:new, :create]
+ # resources :sessions, only: [:create, :destroy]
+ # resource :home, only: [:show]
+ post 'tweets/get_tweets', :to => 'tweets#get_tweets'
 
 end

@@ -23,6 +23,13 @@ function initMap() {
     deleteMarkers();
     placeMarkerAndPanTo(e.latLng, map);
     myLatlng = latLng
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/tweets/get_tweets",
+    //   dataType: 'json',
+    //   data: {coordinates: myLatlng}
+    // });
+
   });
 
   function placeMarkerAndPanTo(latLng, map) {
@@ -35,17 +42,14 @@ function initMap() {
     map.panTo(latLng);
     markers.push(marker);
 
-    // $.post( "/flickr/get_token", myLatlng, function(myLatlng) {
-    // });
-
     $.ajax({
-      type: "GET",
-      url: "/twitter/get_tweet",
-      data: {coordinates: myLatlng},
+      type: "POST",
+      url: "/tweets/get_tweets",
+      data: {coordinates: JSON.stringify(latLng)},
       success: function(data){
-        alert(data["id"])
-      }
+        alert(data["id"])}
     });
+
   }
 
   function deleteMarkers() {
