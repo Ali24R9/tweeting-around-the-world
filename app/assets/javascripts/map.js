@@ -49,6 +49,7 @@ function initMap() {
       success: function(data){
         console.log(data["embedded_tweets"])
         tweets = data["embedded_tweets"]
+        $("#tweets").empty();
         $.each(tweets, function(index, value){
           $("#tweets").append("<div id=" + index + "></div>")
           $('#' + index).append(value.html)
