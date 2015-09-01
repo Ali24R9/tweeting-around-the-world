@@ -9,15 +9,30 @@ class TweetsController < ApplicationController
     end
     coordinates = JSON.parse(params[:coordinates])
     coordinates = {lat: coordinates["G"], lng: coordinates["K"]}
+
     results = client.geo_search(lat: coordinates[:lat], long: coordinates[:lng])
-  rescue Twitter::Error
-    redirect_to root_path
+
     place_id = results.attrs[:result][:places][0][:contained_within][0][:id]
-    place_name = place_id.attrs[:result][:places][0][:contained_within][0][:name]
+    place_name = results.attrs[:result][:places][0][:contained_within][0][:name]
 
     place_name = place_name.gsub(/\s+/, "")
     tweets = client.search("##{place_name}", {place: place_id, lang: "en", result_type: "popular"})
-    
+    tweet_ids = []
+    tweets_texts = []
+    tweets.attrs[:statuses].each do |tweet|
+      tweet_ids << tweet[:id]
+    end
+    embedded_tweets = []
+    tweet_ids.each do |id|
+      embedded_tweets << client.oembed(id)
+    end
+    render json: {embedded_tweets: embedded_tweets}
+    # tweets_texts = []
+    # tweets.attrs[:statuses].each do |tweet|
+    #   tweets_texts << tweet[:text]
+    # end
+
+    # render json: {tweets_texts: tweets_texts}
   rescue Twitter::Error
     redirect_to root_path
     # binding.pry

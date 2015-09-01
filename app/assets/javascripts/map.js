@@ -47,7 +47,13 @@ function initMap() {
       url: "/tweets/get_tweets",
       data: {coordinates: JSON.stringify(latLng)},
       success: function(data){
-        alert(data["id"])}
+        console.log(data["embedded_tweets"])
+        tweets = data["embedded_tweets"]
+        $.each(tweets, function(index, value){
+          $("#tweets").append("<div id=" + index + "></div>")
+          $('#' + index).append(value.html)
+        });
+      }
     });
 
   }
@@ -59,6 +65,15 @@ function initMap() {
 
     markers = [];
   }
+
+  window.twttr = (function (d, s, id) {
+  var t, js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src= "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
 }
 
 
