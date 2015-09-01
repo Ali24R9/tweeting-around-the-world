@@ -47,7 +47,6 @@ function initMap() {
       url: "/tweets/get_tweets",
       data: {coordinates: JSON.stringify(latLng)},
       success: function(data){
-        console.log(data["embedded_tweets"])
         tweets = data["embedded_tweets"]
         $("#tweets").empty();
         $.each(tweets, function(index, value){

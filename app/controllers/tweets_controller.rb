@@ -2,10 +2,8 @@ class TweetsController < ApplicationController
   def get_tweets
 
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.config.twitter_key
-      config.consumer_secret     = Rails.application.config.twitter_secret
-      # config.access_token        = Rails.application.secrets.twitter_access_token
-      # config.access_token_secret = Rails.application.secrets.twitter_access_token
+      config.consumer_key        = ENV['_SECRET_TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['_SECRET_TWITTER_CONSUMER_SECRET_KEY']
     end
     coordinates = JSON.parse(params[:coordinates])
     coordinates = {lat: coordinates["G"], lng: coordinates["K"]}
@@ -26,22 +24,9 @@ class TweetsController < ApplicationController
       embedded_tweets << client.oembed(id)
     end
     render json: {embedded_tweets: embedded_tweets}
-    # tweets_texts = []
-    # tweets.attrs[:statuses].each do |tweet|
-    #   tweets_texts << tweet[:text]
-    # end
 
-    # render json: {tweets_texts: tweets_texts}
   rescue Twitter::Error
     redirect_to root_path
-    # binding.pry
   end
 
-  # def create
-  #   current_user.tweet(twitter_params[:message])
-  # end
-
-  # def twitter_params
-  #   params.require(:tweet).permit(:message)
-  # end
 end
