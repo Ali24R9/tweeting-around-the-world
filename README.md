@@ -1,28 +1,6 @@
-== README
+# Tweeting Around the World
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Users should be able to click on a city from the Google map and then view relevant and recent tweets from that area.
 
-Things you may want to cover:
+Heroku link: http://tweeting-around-the-world.herokuapp.com/
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
